@@ -2,8 +2,9 @@
 withDefaults(
   defineProps<{
     message?: string
+    fullPage?: boolean
   }>(),
-  { message: 'Please connect to the internet and try again.' }
+  { message: 'Please connect to the internet and try again.', fullPage: false }
 )
 
 const emit = defineEmits<{ retry: [] }>()
@@ -12,7 +13,8 @@ const emit = defineEmits<{ retry: [] }>()
 <template>
   <div
     role="alert"
-    class="flex flex-col items-center justify-center gap-3 bg-placeholder px-6 py-20 text-center"
+    class="flex flex-col items-center justify-center gap-3 px-6 py-20 text-center"
+    :class="fullPage ? 'min-h-screen w-full bg-[#DAD9D9]' : 'bg-placeholder'"
   >
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-12 w-12 text-gray-400" aria-hidden="true">
       <path
